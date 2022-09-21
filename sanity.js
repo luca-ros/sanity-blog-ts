@@ -1,5 +1,6 @@
+import createImageUrlBuilder from '@sanity/image-url'
+
 import {
-    createImageUrlBuilder,
     createCurrentUserHook,
     createClient,
 } from "next-sanity";

@@ -1,8 +1,14 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from "next/link"
 import Header from '../components/Header'
+import { sanityClient, urlFor } from "../sanity"
+import { Post } from "../typings"
 
-const Home: NextPage = () => {
+interface Props {
+  posts: [Post];
+}
+
+export default function Home({ posts }: Props) {
   return (
     <div className="max-w-7xl mx-auto">
       <Head>
@@ -19,12 +25,47 @@ const Home: NextPage = () => {
             It is a simple way to acces content and display varius posts in nextJs app...
           </h2>
         </div>
+
         <img className='hidden md:inline-flex h-32 lg:h-full'
-          src="https://i.ibb.co/sv9zMQ6/Nice-Png-avocado-png-286518.png" alt="avocado" />
+          src="https://i.ibb.co/9hG9kxQ/headerimg.png" alt="futuristico" />
+
       </div>
+
       {/* Posts */}
+      <div>
+        {posts.map(post => (
+          <Link key={post._id} href={`/post/${post.slug.current}`} >
+            <div>
+              <img src={
+                urlFor(post.mainImage).url()!} alt="bbom" />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
 
-export default Home
+export const getServerSideProps = async () => {
+  const query =
+    `*[_type == "post"]{
+    _id,
+    title,
+    author-> {
+    name,
+    image
+  },
+  description,
+  mainImage,
+  slug
+  }`;
+
+  const posts = await sanityClient.fetch(query);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
