@@ -3,6 +3,9 @@ import Link from "next/link"
 import Header from '../components/Header'
 import { sanityClient, urlFor } from "../sanity"
 import { Post } from "../typings"
+import { SearchIcon } from '@heroicons/react/solid'
+import { } from '@heroicons/react/outline'
+
 
 interface Props {
   posts: [Post];
@@ -18,16 +21,20 @@ export default function Home({ posts }: Props) {
 
       <Header />
 
-      <div className='flex justify-between items-center rounded-lg bg-blue-200 border-black md:py-10 '>
+      <div className='flex flex-col sm:flex-row justify-around items-center rounded-lg bg-blue-200 border-black py-10 '>
         <div className="px-10 space-y-5">
           <h1 className="text-4xl text-amber-50 max-w-xl"> <span className='underline decoration-orange-400 decoration-4'>Learning</span>'s <span className='font-bold'>Pool</span> </h1>
-          <h2 className='text-lg text-gray-500'>
-            Javascript, Nextjs, typeScript 
+          <h2 className='text-lg text-gray-400'>
+            Javascript, Nextjs, typeScript
           </h2>
         </div>
         {/* Search Box */}
-        <form>
-          {/* <SearchIcon /> */}
+        <form className='flex items-center space-x-2 border border-gray-200 rounded-lg bg-gray-50 px-3 py-1 '>
+          <SearchIcon className='h-6 w-6 text-gray-400' />
+          <input className='flex-1 bg-transparent outline-none' type='text' placeholder='Search your treasure' />
+
+          {/* button is hidden just to give the functionality to hit Enter end start the search without a visual button */}
+          <button type='submit' hidden />
 
         </form>
       </div>
