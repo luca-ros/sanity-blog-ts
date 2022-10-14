@@ -1,12 +1,19 @@
 import Link from "next/link"
+import Image from 'next/image'
 
 function Header() {
     return (
         <header className="flex justify-between p-5 max-w-7-xl mx-auto">
             <div className="flex items-center space-x-5">
-                <Link href="/">
-                    <img className="w-20 obect-contain cursor-pointer" src="https://png.pngtree.com/png-clipart/20201208/original/pngtree-red-and-black-logo-png-image_5517319.jpg" alt="logo lukiluk" />
-                </Link>
+                    <div className="relative h-10 w-10">
+                <a href="/">
+                        <Image
+                        objectFit="contain" 
+                        src='https://i.ibb.co/85ZMRX0/android-chrome-512x512.png' layout='fill'
+                        alt=""
+                        />
+                        </a>
+                    </div>
                 <div className="hidden md:inline-flex items-center space-x-5">
                     <h3>About</h3>
                     <h3>Contact</h3>

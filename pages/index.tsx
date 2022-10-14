@@ -18,17 +18,18 @@ export default function Home({ posts }: Props) {
 
       <Header />
 
-      <div className='flex justify-between items-center bg-blue-300 border-black py-10 lg:py-0'>
+      <div className='flex justify-between items-center rounded-lg bg-blue-200 border-black md:py-10 '>
         <div className="px-10 space-y-5">
-          <h1 className="text-5xl max-w-xl font-serif"> <span className='underline decoration-orange-400 decoration-4'>Lukiluk</span> is a prototip blog using Sanity as Content imput</h1>
-          <h2>
-            It is a simple way to acces content and display varius posts in nextJs app...
+          <h1 className="text-4xl text-amber-50 max-w-xl"> <span className='underline decoration-orange-400 decoration-4'>Learning</span>'s <span className='font-bold'>Pool</span> </h1>
+          <h2 className='text-lg text-gray-500'>
+            Javascript, Nextjs, typeScript 
           </h2>
         </div>
+        {/* Search Box */}
+        <form>
+          {/* <SearchIcon /> */}
 
-        <img className='hidden md:inline-flex h-32 lg:h-full'
-          src="https://i.ibb.co/9hG9kxQ/headerimg.png" alt="futuristico" />
-
+        </form>
       </div>
 
       {/* Posts */}
